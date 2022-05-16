@@ -1,3 +1,33 @@
-html {
 
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+/* ID*/
+
+#color_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -50%);
+    grid-template-columns: auto auto;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+}
+
+#color_submit_btn{
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    transform: translate(-60%);
+}
+
+/* Classes*/
+.buttons{
+    background-color: aquamarine;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 6px 10px;
+    text-decoration: none;
+    font-size: 15px;  
 }

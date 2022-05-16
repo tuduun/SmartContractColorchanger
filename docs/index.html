@@ -1,8 +1,25 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorHack</title>
     <link href="style/style.css" rel="stylesheet">
-  <head>
-  <body>
+</head>
+<body id = "body">
+        <div id = "setColor">
+            <div id = "color_box">
+                <label for="color_input">Choose your color:</label> <input type="color" id = "color_input">
+                <button id = "color_submit_btn" class = buttons>Press me</button>
+            </div>
+
+            <div id = "resetColor" hidden>
+                <label for="restart_btn">Pay to change the color:</label>
+                <button id = "restart_btn">Request ETH</button>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@latest/dist/web3.min.js"></script>
     <script src="scripts/script.js" type="text/javascript"></script>
-  </body>
+</body>
 </html>
