@@ -47,7 +47,6 @@ theInput.addEventListener("input", function(){
   document.getElementById("body").style.backgroundColor = x;
   resetColor.removeAttribute("hidden");
   get_status_btn.removeAttribute("hidden");
-  evt.preventDefault();
   
 }, false);
 
@@ -92,6 +91,9 @@ const web3Instance = async() => {
             from: wallet
         });
         statusColor = "";
+        setTimeout(() => {
+            window.alert("Please press Get Status after your transaction is complete!");
+          }, "9000")
         return false;
         });
     }

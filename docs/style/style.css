@@ -109,3 +109,12 @@ body{
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .glow-on-hover {
+        width: 30%;
+
+    }
+
+  }
