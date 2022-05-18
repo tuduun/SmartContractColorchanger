@@ -91,9 +91,6 @@ const web3Instance = async() => {
             from: wallet
         });
         statusColor = "";
-        setTimeout(() => {
-            window.alert("Please press Get Status after your transaction is complete!");
-          }, "9000")
         return false;
         });
     }
