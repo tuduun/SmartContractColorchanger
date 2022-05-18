@@ -1,4 +1,4 @@
-const address = "0x81855562a4388B2c76A58B06884E834d67C03B06";
+const address = "0xF852E648E4126dD4576737Bd0C1F1fF0d8E447e3"; 
 const abi = [
     {
         "inputs": [
@@ -39,13 +39,17 @@ const abi = [
     }
 ];
 
-color_submit_btn.addEventListener("click", (evt) => {
-    let x = document.getElementById("color_input").value;
-    document.getElementById("body").style.backgroundColor = x;
-    color_box.setAttribute("hidden", "true");
-    resetColor.removeAttribute("hidden");
-    evt.preventDefault();
-});
+
+var theInput = document.getElementById("color_input");
+
+theInput.addEventListener("input", function(){
+  var x = theInput.value;
+  document.getElementById("body").style.backgroundColor = x;
+  resetColor.removeAttribute("hidden");
+  get_status_btn.removeAttribute("hidden");
+  evt.preventDefault();
+  
+}, false);
 
 const web3Instance = async() => {
 
@@ -60,19 +64,28 @@ const web3Instance = async() => {
     // Create connection to contract
     const statusContract = new web3.eth.Contract(abi, address);
     // "regular expression" for finding and replacing links in status updates with anchor tags
-    color_submit_btn.addEventListener("click",async() => {
-        getStatusPromise = statusContract.methods.getColor().call({
+    const pageColor = async() => {
+        getStatusPromise = statusContract.methods.getColor("body").call({
             from: wallet
           });
           // Get data from contract
           let color = await getStatusPromise;
           // Post as innerHTML to currentStatus element
-          document.style.backgroundColor = color;
+          document.getElementById("body").style.backgroundColor = color;
           console.log("clicked");
         return false;
 
-    });
-    restart_btn.addEventListener("click", async() => {
+    };
+    // Get the status everytime the page reloads or starts 
+    pageColor();
+    get_status_btn.addEventListener("click", async() => {
+        pageColor();
+        document.getElementById("resetColor").hidden = true;
+        document.getElementById("get_status_btn").hidden = true;
+
+    })
+
+    set_status_btn.addEventListener("click", async() => {
         // Send ETH from current wallet to address to update the status via contract
         let statusColor = document.getElementById("color_input").value
         setStatusPromise = statusContract.methods.setColor(statusColor,"body").send({
@@ -81,8 +94,6 @@ const web3Instance = async() => {
         statusColor = "";
         return false;
         });
-        //getColor.click();
-    
     }
 }
 
