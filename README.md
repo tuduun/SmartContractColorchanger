@@ -8,5 +8,5 @@ You can set the color by pressing the `set status` button. It will lead you to M
 
 
 ## Github page Link:
-tuduun.github.io/SmartContractColorchanger
+https://tuduun.github.io/SmartContractColorchanger/
 
